@@ -5,16 +5,16 @@ import "fmt"
 import "os"
 
 type Cmd struct {
-	helpFlag bool
+	helpFlag    bool
 	versionFlag bool
-	cpOption string
-	XjreOption string  // ext
-	class string
-	args []string
+	cpOption    string
+	XjreOption  string // ext
+	class       string
+	args        []string
 }
 
 func parseCmd() *Cmd {
-	var cmd = &Cmd{}  // 定义一个空的Cmd, 然后取其的地址, 赋值给cmd这个指针
+	var cmd = &Cmd{} // 定义一个空的Cmd, 然后取其的地址, 赋值给cmd这个指针
 	flag.Usage = printUsage
 	flag.BoolVar(&cmd.helpFlag, "help", false, "print help message")
 	flag.BoolVar(&cmd.helpFlag, "?", false, "print help message")
@@ -24,7 +24,7 @@ func parseCmd() *Cmd {
 	flag.StringVar(&cmd.XjreOption, "Xjre", "", "path to jre")
 	flag.Parse()
 
-	var args = flag.Args()  // read args from input
+	var args = flag.Args() // read args from input
 	if len(args) > 0 {
 		cmd.class = args[0]
 		cmd.args = args[1:]
