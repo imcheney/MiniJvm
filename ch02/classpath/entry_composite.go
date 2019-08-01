@@ -5,9 +5,8 @@ import (
 	"strings"
 )
 
-type CompositeEntry []Entry{
-
-}
+// 本质上是entry slice
+type CompositeEntry []Entry
 
 func newCompositeEntry(pathList string) CompositeEntry {
 	var compositeEntry = []Entry{}

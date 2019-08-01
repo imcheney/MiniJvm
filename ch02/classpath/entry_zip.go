@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 )
 
+// ZipEntry本质上只是把一个目录文件夹打包成Zip文件, 与目录是没什么区别的
 type ZipEntry struct {
 	absPath string
 }
@@ -22,7 +23,7 @@ func newZipEntry(path string) *ZipEntry{
 }
 
 func (self *ZipEntry) readClass(className string) ([]byte, Entry, error){
-	var resource, err = zip.OneReader(self.absPath)
+	var resource, err = zip.OpenReader(self.absPath)
 	if err != nil {
 		return nil, nil, err
 	}
